@@ -30,6 +30,6 @@ public class CusReplyInsertHandler implements CommandHandler{
 
         res.getWriter().print(result);
 
-        return "/CusReplyList.do";
+        return "CusReplyList.do";
 	}
 }

@@ -26,7 +26,7 @@
             <td style="width: 80%;">
                 <div class="relpyForm">
                     <label for="reply"></label> 
-                    <input type="text" class="form-control" id="reply" placeholder="댓글을 입력하세요." style="width: 350px; height: 30px;" name="nikname">
+                    <input type="text" class="form-control" id="reply" placeholder="댓글을 입력하세요." style="width: 350px; height: 30px;" name="reply">
                 </div>
             </td>
             <td><button class="btn" onclick="insertReply();" style="width: 80px;  height: 30px;">게시하기</button></td>
@@ -59,7 +59,7 @@
     function insertReply(){
     	$.ajax({
     		url : "CusReplyInsert.do",
-     	 	type:"GET",
+     	 	type:"POST",
      	 	dataType:"json",
     		success : function(result){
 								if(result>0){
@@ -74,7 +74,7 @@
      function selectReplyList(){
      	$.ajax({
      	 	url : "CusReplyList.do",
-     	 	type:"GET",
+     	 	type:"POST",
      	 	dataType:"json",
          	success : function(selectReplyList){
          		var result = "";

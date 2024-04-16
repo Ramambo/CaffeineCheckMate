@@ -15,13 +15,16 @@ public class CusReplyListHandler implements CommandHandler{
 	
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		System.out.println("조회 핸들러 왔슈");
-		
-		int cus_no = Integer.parseInt(req.getParameter("cus_no"));
-		ArrayList <CusReplyDto> selectReplyList = new CusReplyListService().selectReplyList(cus_no);
-		
-		res.setContentType("application/json;charset=utf-8");
-		new Gson().toJson(selectReplyList,res.getWriter());
-		return "/CusReplyPage.jsp";
+	    System.out.println("조회 핸들러 왔슈");
+	    
+	    int cus_no = Integer.parseInt(req.getParameter("cus_no"));
+	    ArrayList<CusReplyDto> selectReplyList = new CusReplyListService().selectReplyList(cus_no);
+	    
+	    res.setContentType("application/json;charset=utf-8");
+	    String json = new Gson().toJson(selectReplyList);
+	    res.getWriter().write(json); // JSON 응답을 전송
+	    
+	    return null;
 	}
+
 }
