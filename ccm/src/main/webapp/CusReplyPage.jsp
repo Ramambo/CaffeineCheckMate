@@ -26,10 +26,10 @@
             <td style="width: 80%;">
                 <div class="relpyForm">
                     <label for="reply"></label> 
-                    <input type="text" class="form-control" id="usr" placeholder="댓글을 입력하세요." style="width: 350px; height: 30px;" name="nikname">
+                    <input type="text" class="form-control" id="reply" placeholder="댓글을 입력하세요." style="width: 350px; height: 30px;" name="nikname">
                 </div>
             </td>
-            <td><button class="btn btn-sm btn-success" onclick="insertReply();" style="width: 80px;  height: 30px;">게시하기</button></td>
+            <td><button class="btn" onclick="insertReply();" style="width: 80px;  height: 30px;">게시하기</button></td>
         </tr>
     </table>
 </div>
@@ -52,7 +52,7 @@
 	/*자동 함수 호출*/
 	$(function(){
 		selectReplyList();
-		setInterval(selectReplyList,5000);
+		setInterval(selectReplyList,50000);
 	})
 	
 	 /*댓글 작성*/
@@ -73,7 +73,7 @@
      /*댓글 조회 */
      function selectReplyList(){
      	$.ajax({
-     	 	url : "CusReplyInsert.do",
+     	 	url : "CusReplyList.do",
      	 	type:"GET",
      	 	dataType:"json",
          	success : function(selectReplyList){
@@ -81,11 +81,11 @@
          		for(var i in selectReplyList){
          			result += 
             			"<br>"	+	
-                        "<td>" + "<b>" + selectReplyList[i].replyWriter + "</b>" + "</td>" +
-                        "<td>" + selectReplyList[i].enrollDate + "</td>" + 
+                        "<td>" + "<b>" + selectReplyList[i].getCus_no + "</b>" + "</td>" +
+                        "<td>" + selectReplyList[i].getCus_re_regdate + "</td>" + 
                         "<br>" +
                         "<tr class='reply-deatil-content'>" + 
-                        "<td colspan='3'>" + selectReplyList[i].replyContent  + "</td>" + 
+                        "<td colspan='3'>" + selectReplyList[i].getCus_re_content  + "</td>" + 
                         "</tr>" +
                         "<br>"
          		} 
