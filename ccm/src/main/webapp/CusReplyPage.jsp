@@ -57,25 +57,29 @@
 	
 	 /*댓글 작성*/
     function insertReply(){
-    	$.ajax({
-    		url : "CusReplyInsert.do",
-     	 	type:"POST",
-     	 	dataType:"json",
-    		success : function(result){
-								if(result>0){
-			         			selectReplyList();
-			         			$("#reply").val("");
-				         		}
-				    		}
-		     		})
-		   	  }
+		$.ajax({
+       		url : "CusReplyInsert.do"
+       		,data : {
+		       			cus_re_regdate: new Date().toISOString(),
+		                cus_re_content: $("#reply").val()
+        			}
+       		,type : "GET"
+       		,success : function(insertReply){
+            		if(result>0){
+            			selectReplyList();
+            			$("#reply").val("");
+            		}
+       		}
+        	
+        	})
+        }
 
      /*댓글 조회 */
      function selectReplyList(){
-     	$.ajax({
+    	 $.ajax({
      	 	url : "CusReplyList.do",
-     	 	type:"POST",
-     	 	dataType:"json",
+         	data : {
+			},
          	success : function(selectReplyList){
          		var result = "";
          		for(var i in selectReplyList){

@@ -19,10 +19,11 @@ public class CusReplyInsertService {
 		Connection conn = ConnectionProvider.getConnection();
 		System.out.println("작성 서비스 왔슈--2");
 		int result = new CusReplyDao().insertReply(conn, reply);
-		System.out.println("작성 서비스 왔슈--33");
+		System.out.println(result);
+		System.out.println("작성 서비스 왔슈--3");
 		
 		if(result>0) {
-			System.out.println("작성 서비스 왔슈--2");
+			System.out.println("작성 서비스 왔슈--4");
 		}else {
 			rollback(conn);
 		}
