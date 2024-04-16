@@ -25,6 +25,6 @@ public class CusReplyInsertHandler implements CommandHandler{
 
         res.getWriter().print(result);
 
-        return null;
+        return "/CusReplyList.do";
 	}
 }

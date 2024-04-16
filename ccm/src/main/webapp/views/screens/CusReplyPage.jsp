@@ -20,7 +20,7 @@
                     <img class="profile" src="<%=request.getContextPath()%>/resources/imgs/profile.png" style="width: 40px; height: 40px; vertical-align: middle;">
                 </div>
             </td>
-            <!-- 여기에 </td> 태그 추가 -->
+            
         </tr>
         <tr>
             <td style="width: 80%;">
@@ -39,7 +39,7 @@
 	<!--댓글 조회-->
 	<div id="replList">
 		<!--각 댓글 영역 -->
-		<div class="replyArea" align="center" id="reply-content-area">
+		<div class="replyArea" align="center" id="replyArea">
 			<table style="width: 500px;">
 				<tbody>
 
@@ -58,12 +58,9 @@
 	 /*댓글 작성*/
     function insertReply(){
     	$.ajax({
-    		url : "insert.do",
-    	    data : {content : $("#reply").val(),
-	    	custoRecipeNo : "1",
-	   		memberId : "원진"
-     		},
-    		type : "post",
+    		url : "CusReplyInsert.do",
+     	 	type:"GET",
+     	 	dataType:"json",
     		success : function(result){
 								if(result>0){
 			         			selectReplyList();
@@ -72,32 +69,27 @@
 				    		}
 		     		})
 		   	  }
-     
+
      /*댓글 조회 */
      function selectReplyList(){
      	$.ajax({
-     	 	url : "list.do",
-         	data : {cus_no: "1"},
-         	success : function(cus_re_list){
+     	 	url : "CusReplyInsert.do",
+     	 	type:"GET",
+     	 	dataType:"json",
+         	success : function(selectReplyList){
          		var result = "";
-         		for(var i in cus_re_list){
+         		for(var i in selectReplyList){
          			result += 
             			"<br>"	+	
-            			"<td>"+
-                        "<div class='box' style='background: #white;''>" + 
-                        "<img class='profile' src='" + list[i].profileImg + "'>" + 
-                       	"</div>" +
-                 		"</td>" + 	
-                        "<td>" + "<b>" + list[i].replyWriter + "</b>" + "</td>" +
-                        "<td>" + list[i].enrollDate + "</td>" + 
-                        "<td style='color: gray;'>" + "<a href='' class='report-user-btn'>" + "신고하기" + "</a>" + "</td>" + 
+                        "<td>" + "<b>" + selectReplyList[i].replyWriter + "</b>" + "</td>" +
+                        "<td>" + selectReplyList[i].enrollDate + "</td>" + 
                         "<br>" +
                         "<tr class='reply-deatil-content'>" + 
-                        "<td colspan='3'>" + list[i].replyContent  + "</td>" + 
+                        "<td colspan='3'>" + selectReplyList[i].replyContent  + "</td>" + 
                         "</tr>" +
                         "<br>"
          		} 
-					$("#reply-content-area tbody").html(result);	
+					$("#replyArea tbody").html(result);	
          	}
      	})
      }

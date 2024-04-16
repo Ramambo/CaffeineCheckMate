@@ -22,6 +22,6 @@ public class CusReplyListHandler implements CommandHandler{
 		
 		res.setContentType("application/json;charset=utf-8");
 		new Gson().toJson(selectReplyList,res.getWriter());
-		return null;
+		return "/CusReplyPage.do";
 	}
 }
