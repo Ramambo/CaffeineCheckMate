@@ -10,31 +10,6 @@
 
 </head>
 <body>
-	<!--댓글 입력-->
-	<div align="center">
-    <table style="width: 500px;">
-        <tr>
-            <td rowspan="2" style="vertical-align: middle; text-align: center;">
-                <!--프로필 사진-->
-                <div class="box" style="background: white;">
-                    <img class="profile" src="<%=request.getContextPath()%>/resources/imgs/profile.png" style="width: 40px; height: 40px; vertical-align: middle;">
-                </div>
-            </td>
-            
-        </tr>
-        <tr>
-            <td style="width: 80%;">
-                <div class="relpyForm">
-                    <label for="reply"></label> 
-                    <input type="text" class="form-control" id="reply" placeholder="댓글을 입력하세요." style="width: 350px; height: 30px;" name="reply">
-                </div>
-            </td>
-            <td><button class="btn" onclick="insertReply();" style="width: 80px;  height: 30px;">게시하기</button></td>
-        </tr>
-    </table>
-</div>
-
-
 	<br>
 	<!--댓글 조회-->
 	<div id="replList">
@@ -46,6 +21,30 @@
 				</tbody>
 			</table>
 		</div>
+	</div>
+	
+	<!--댓글 입력-->
+	<div align="center">
+	    <table style="width: 500px;">
+	        <tr>
+	            <td rowspan="2" style="vertical-align: middle; text-align: center;">
+	                <!--프로필 사진-->
+	                <div class="box" style="background: white;">
+	                    <img class="profile" src="<%=request.getContextPath()%>/resources/imgs/profile.png" style="width: 40px; height: 40px; vertical-align: middle;">
+	                </div>
+	            </td>
+	            
+	        </tr>
+	        <tr>
+	            <td style="width: 80%;">
+	                <div class="relpyForm">
+	                    <label for="reply"></label> 
+	                    <input type="text" class="form-control" id="reply" placeholder="댓글을 입력하세요." style="width: 350px; height: 30px;" name="reply">
+	                </div>
+	            </td>
+	            <td><button class="btn" onclick="insertReply();" style="width: 80px;  height: 30px;">게시하기</button></td>
+	        </tr>
+	    </table>
 	</div>
 
 	<script>
@@ -60,11 +59,11 @@
 		$.ajax({
        		url : "CusReplyInsert.do"
        		,data : {
-		       			cus_re_regdate: new Date().toISOString(),
+       					cus_no: 1,
 		                cus_re_content: $("#reply").val()
         			}
        		,type : "GET"
-       		,success : function(insertReply){
+       		,success : function(result){
             		if(result>0){
             			selectReplyList();
             			$("#reply").val("");

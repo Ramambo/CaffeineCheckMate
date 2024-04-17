@@ -10,15 +10,18 @@ public class CusReplyDto {
 	private String cus_re_regdate;
 	private String cus_re_content;
 	
+	public CusReplyDto(int cus_no, String cus_re_content) {
+		this.cus_no = cus_no;
+		this.cus_re_content = cus_re_content;
+	}
+	
 	public CusReplyDto(int cus_no, String cus_re_regdate, String cus_re_content) {
-		System.out.println("작성 DTO 왔슈");
 		this.cus_no = cus_no;
 		this.cus_re_regdate = cus_re_regdate;
 		this.cus_re_content = cus_re_content;
 	}
 	
 	public CusReplyDto(int cus_no, int cus_re_no, String cus_re_regdate, String cus_re_content) {
-		System.out.println("조회 DTO 왔슈");
 		this.cus_no = cus_no;
 		this.cus_re_no = cus_re_no;
 		this.cus_re_regdate = cus_re_regdate;

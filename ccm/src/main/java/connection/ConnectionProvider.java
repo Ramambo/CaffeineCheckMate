@@ -8,6 +8,6 @@ public class ConnectionProvider {
 	
 	
 	public static Connection getConnection() throws SQLException {
-		return DriverManager.getConnection("jdbc:apache:commons:dbcp:ccm");//스키마이름
+		return DriverManager.getConnection("jdbc:apache:commons:dbcp:ccm");
 	}
 }

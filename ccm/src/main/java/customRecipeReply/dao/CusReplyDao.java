@@ -2,8 +2,6 @@ package customRecipeReply.dao;
 
 import static jdbc.JdbcUtil.close;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,27 +12,24 @@ import java.util.Properties;
 import customRecipeReply.dto.CusReplyDto;
 
 public class CusReplyDao {
-	private Properties prop = new Properties();
 	
 	public CusReplyDao() {
-		try {
-			prop.loadFromXML(new FileInputStream(CusReplyDao.class.getResource("/WEB-INF/reply-mapper.xml").getPath()));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+
 	}
+	
 	
 	/*글 삽입*/
 	public int insertReply(Connection conn, CusReplyDto reply) {
 		System.out.println("작성 DAO 왔슈");
 	    int result = 0;
 	    PreparedStatement pstmt = null;
-	    String sql = prop.getProperty("insertReply");
+	   
+	    String sql = "INSERT INTO CUSTOM_REPLY(CUS_NO, CUS_RE_CONTENT) VALUES(?, ?)";
 	    try {
 	        pstmt = conn.prepareStatement(sql);
 	        pstmt.setInt(1, reply.getCus_no());
-	        pstmt.setString(2, reply.getCus_re_regdate());
-	        pstmt.setString(3, reply.getCus_re_content());
+	        //pstmt.setString(1, reply.getCus_re_regdate());
+	        pstmt.setString(2, reply.getCus_re_content());
 	        
 	        result = pstmt.executeUpdate();
 	    } catch (SQLException e) {
@@ -49,9 +44,11 @@ public class CusReplyDao {
 	public ArrayList <CusReplyDto> selectReplyList(Connection conn, int cus_no){
 		System.out.println("조회 DAO 왔슈");
 		ArrayList<CusReplyDto> cus_re_list = new ArrayList<>();
+		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String sql = prop.getProperty("selectReplyList");
+		String sql = "SELECT CUS_NO, CUS_RE_NO, CUS_RE_REGDATE, CUS_RE_CONTENT FROM CUSTOM_REPLY ORDER BY CUS_RE_REGDATE DESC";
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
