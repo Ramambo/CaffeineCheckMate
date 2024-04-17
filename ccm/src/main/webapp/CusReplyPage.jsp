@@ -66,7 +66,7 @@
        		,success : function(result){
             		if(result>0){
             			selectReplyList();
-            			$("#reply").val("");
+            			$("#cus_re_content").val("");
             		}
        		}
         	
@@ -77,7 +77,7 @@
      function selectReplyList(){
     	 $.ajax({
      	 	url : "CusReplyList.do",
-         	data : {
+         	data : {cus_no:
 			},
          	success : function(selectReplyList){
          		var result = "";
