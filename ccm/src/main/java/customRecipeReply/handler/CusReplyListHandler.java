@@ -24,14 +24,16 @@ public class CusReplyListHandler implements CommandHandler{
 		
 	    int cus_no = Integer.parseInt(req.getParameter("cus_no"));
 	    ArrayList<CusReplyDto> selectReplyList = new CusReplyListService().selectReplyList(cus_no);
+	    System.out.println("selectReplyList:"+selectReplyList);
 	    
 	    res.setContentType("application/json;charset=utf-8");
 	    String json = new Gson().toJson(selectReplyList);
+	    System.out.println("json:"+json);
 	    res.getWriter().write(json); // JSON 응답을 전송
 	    
 	    JdbcUtil.close(conn);
 	    
-	    return null;
+	    return "/CusReplyPage.jsp";
 	}
 
 }

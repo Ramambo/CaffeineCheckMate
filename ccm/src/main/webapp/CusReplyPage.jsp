@@ -93,8 +93,9 @@
          		for(var i in selectReplyList){
          			result += 
             			"<br>"	+	
-                        "<td>" + "<b>" + selectReplyList[i].cus_no + "</b>" + "</td>" +
-                        "<td>" + selectReplyList[i].cus_re_regdate + "</td>" + 
+                        "<td>" + "<b>" + selectReplyList[i].getCus_no + "</b>" + "</td>" +
+                        "<td>" + selectReplyList[i].getCus_re_no + "</td>" + 
+                        "<td>" + selectReplyList[i].getCus_re_regdate + "</td>" + 
                         "<br>" +
                         "<tr class='reply-deatil-content'>" + 
                         "<td colspan='3'>" + selectReplyList[i].getCus_re_content  + "</td>" + 
