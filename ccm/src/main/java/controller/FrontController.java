@@ -31,7 +31,6 @@ public class FrontController extends HttpServlet {
 	    String configFilePath = getServletContext().getRealPath(configFile);
 
 	    try (FileReader fis = new FileReader(configFilePath)) {
-	    	System.out.println("컨트롤러 왔다");
 	        prop.load(fis); 
 	        prop.forEach((key, value) -> {  
 	            String command = (String) key;
@@ -68,7 +67,7 @@ public class FrontController extends HttpServlet {
 			handler = new NullHandler();
 		}
 		
-	if(requestURI.indexOf(request.getContextPath())==0) {
+		if(requestURI.indexOf(request.getContextPath())==0) {
 			handler = ControleMap.get(command);
 			try {
 				viewPage = handler.process(request, response);
@@ -77,5 +76,9 @@ public class FrontController extends HttpServlet {
 			}
 		}
 		request.getRequestDispatcher(viewPage).forward(request, response);
+	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("doPost");
+		doGet(request, response);
 	}
 }
