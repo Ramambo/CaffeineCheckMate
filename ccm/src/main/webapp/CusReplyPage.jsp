@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<%@ page import="java.util.ArrayList, customRecipeReply.dto.*, customRecipeReply.dao.*, customRecipeReply.handler.*, customRecipeReply.service.*" %>
+
+<%
+	ArrayList<CusReplyDto> cus_re_list = (ArrayList<CusReplyDto>)request.getAttribute("cus_re_list");
+	//int cus_no = (int)request.getAttribute("cus_no");
+	CusReplyDto cs = (CusReplyDto)request.getAttribute("cs");
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,15 +85,16 @@
      function selectReplyList(){
     	 $.ajax({
      	 	url : "CusReplyList.do",
-         	data : {cus_no:
+         	data : {
+         		cus_no: "1"
 			},
          	success : function(selectReplyList){
          		var result = "";
          		for(var i in selectReplyList){
          			result += 
             			"<br>"	+	
-                        "<td>" + "<b>" + selectReplyList[i].getCus_no + "</b>" + "</td>" +
-                        "<td>" + selectReplyList[i].getCus_re_regdate + "</td>" + 
+                        "<td>" + "<b>" + selectReplyList[i].cus_no + "</b>" + "</td>" +
+                        "<td>" + selectReplyList[i].cus_re_regdate + "</td>" + 
                         "<br>" +
                         "<tr class='reply-deatil-content'>" + 
                         "<td colspan='3'>" + selectReplyList[i].getCus_re_content  + "</td>" + 

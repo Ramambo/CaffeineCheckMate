@@ -18,11 +18,9 @@ public class CusReplyListService {
 		
 		Connection conn = null;
 		conn = ConnectionProvider.getConnection();
-		
 		conn.setAutoCommit(false);
 		
 		ArrayList<CusReplyDto> cus_re_list = new CusReplyDao().selectReplyList(conn,cus_no);
-		
 		JdbcUtil.close(conn);
 		
 		return cus_re_list;
