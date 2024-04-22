@@ -162,6 +162,26 @@
 	                </tbody>
 	            </table>
 	        </div>
+	        <div class="container">
+        <h2>캘린더</h2>
+        <div id="calendar"></div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: [
+                    // 여기에 이벤트 데이터를 추가하세요
+                    // 예: { title: '이벤트 제목', start: '시작일', end: '종료일' }
+                    // 예: { title: 'Meeting', start: '2024-04-23T10:00:00', end: '2024-04-23T12:00:00' }
+                ]
+            });
+            calendar.render();
+        });
+    </script>
+	        
+	        
 	        <!-- 홈으로 돌아가기 -->
            	<a href="/main.do" class="btn btn-primary" >GO TO TESTVIEW</a>
 	    </div>
