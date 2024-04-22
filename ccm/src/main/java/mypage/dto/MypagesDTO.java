@@ -1,15 +1,19 @@
 package mypage.dto;
 
+import java.util.HashMap;
 import java.util.List;
+
+import calendar.dto.Calendar;
+import favorite.dto.Favorite;
 
 public class MypagesDTO {
 
 	private UserProfileDTO userProfileDTO; //유저 프로필 
 	private List<MyRecipeDTO> myRecipeDTO; // 내가 작성한 레시피 (+이미지)
-	private List<FavoriteListDTO> favoriteListDTO; //즐겨찾기 목록 (+이미지)
-	private List<HealthLightDTO> healthLightDTO; // 카페인 캘린더 
+	private HashMap<Integer, Favorite> favoriteListDTO; //즐겨찾기 목록 (+이미지)
+	private List<Calendar> healthLightDTO; // 카페인 캘린더 
 	
-	public MypagesDTO(UserProfileDTO userProfileDTO, List<MyRecipeDTO> myRecipeDTO, List<FavoriteListDTO> favoriteListDTO, List<HealthLightDTO> healthLightDTO ) {
+	public MypagesDTO(UserProfileDTO userProfileDTO, List<MyRecipeDTO> myRecipeDTO, HashMap<Integer, Favorite> favoriteListDTO, List<Calendar> healthLightDTO ) {
 		this.userProfileDTO = userProfileDTO;
 		this.myRecipeDTO = myRecipeDTO;
 		this.favoriteListDTO = favoriteListDTO;
@@ -32,19 +36,19 @@ public class MypagesDTO {
 		this.myRecipeDTO = myRecipeDTO;
 	}
 
-	public List<FavoriteListDTO> getFavoriteListDTO() {
+	public HashMap<Integer, Favorite> getFavoriteListDTO() {
 		return favoriteListDTO;
 	}
 
-	public void setFavoriteListDTO(List<FavoriteListDTO> favoriteListDTO) {
-		this.favoriteListDTO = favoriteListDTO;
+	public void setFavoriteListDTO(HashMap<Integer, Favorite> favoriteListDTO) {
+		this.favoriteListDTO =  favoriteListDTO;
 	}
 
-	public List<HealthLightDTO> getHealthLightDTO() {
+	public List<Calendar> getHealthLightDTO() {
 		return healthLightDTO;
 	}
 
-	public void setHealthLightDTO(List<HealthLightDTO> healthLightDTO) {
+	public void setHealthLightDTO(List<Calendar> healthLightDTO) {
 		this.healthLightDTO = healthLightDTO;
 	}
 
