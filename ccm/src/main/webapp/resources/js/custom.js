@@ -4,7 +4,6 @@ var curPage = 1;
 //검색코드
 $(document).ready(function(){
    list(allcount);
-   
     $('#searchInput').keypress(function(event) {
         if (event.which === 13) { 
             var searchTerm = $('#searchInput').val();
@@ -36,6 +35,12 @@ $(document).ready(function(){
     $("#searchInput").blur(function(){
         $(this).attr('placeholder', 'Search');
     });
+});
+
+$(document).ready(function(){
+	if(img.value==="default.png"){
+		$("#preview").attr("src","#");
+	}
 });
 
 /*$(document).ready(function() {
@@ -80,7 +85,9 @@ $(document).ready(function(){
       let decaf = 'null';
       
        $(".dropdown").click(function(){
-              $(this).next(".dropdown-options").slideToggle();
+            let Dropdowns = $(this).next(".dropdown-options");
+			$(".dropdown-options").not(Dropdowns).slideUp();
+			Dropdowns.slideToggle();
           });
 
           $("#shotButton + .dropdown-options li").click(function(){
@@ -126,7 +133,7 @@ $(document).ready(function(){
 
           function sendData() {
               $.ajax({
-                  url: '/Jsontest.do',
+                  url: '/CustomBoardTag.do',
                   type: 'get',
                   data: {
                      "shot" : shot,
@@ -226,22 +233,22 @@ function scroller() {
 	}
 }
 cusBox.addEventListener("scroll", scroller);
-// $(cusBox).on("scroll", function() {
-//    var scrollTop = $(window).scrollTop(); // 위로 스크롤된 길이
-//    var windowsHeight = $(window).height(); //웹브라우저의 창의 높이
-//    var documentHeight = $(document).height(); // 문서 전체의 높이
-//    var isBottom = scrollTop + windowsHeight + 1 >= documentHeight;
+/* $(cusBox).on("scroll", function() {
+    var scrollTop = $(window).scrollTop(); // 위로 스크롤된 길이
+    var windowsHeight = $(window).height(); //웹브라우저의 창의 높이
+    var documentHeight = $(document).height(); // 문서 전체의 높이
+    var isBottom = scrollTop + windowsHeight + 1 >= documentHeight;
    
-//    if (isBottom) {
-//       //만일 현재 마지막 페이지라면
-//       if (allcount <= 0) {
-//          return false; //함수종료
-//       } else {
-//          list(allcount-8); //추가로 받을 리스트 ajax처리
-//          allcount -= 8 ;
-//       }
-//    }
-// });
+    if (isBottom) {
+       //만일 현재 마지막 페이지라면
+       if (allcount <= 0) {
+          return false; //함수종료
+       } else {
+         list(allcount-8); //추가로 받을 리스트 ajax처리
+          allcount -= 8 ;
+       }
+    }
+ });*/
 
    
    

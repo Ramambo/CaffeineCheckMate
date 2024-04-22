@@ -1,9 +1,22 @@
 @charset "UTF-8";
 
+/*사진버튼@@@@@@@*/
+label.input-file-button{
+  padding: 6px 25px;
+  background-color:#0C4A60;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+}
+.file{
+	display:none;
+}
 .cus-box{
     overflow: auto;
     height: 170px;
 }
+
+/*@@@@@@@@@*/
 
 
 /*---------- 검색창 ----------*/

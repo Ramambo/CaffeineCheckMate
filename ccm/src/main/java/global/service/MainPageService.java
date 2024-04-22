@@ -4,13 +4,13 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.Map;
 
 import calendar.dao.CalendarDao;
 import calendar.dto.Calendar;
 import coffeeList.dao.CoffeeListDao;
 import coffeeList.dto.Coffee;
 import connection.ConnectionProvider;
+import customRecipe.dao.CustomBoardListDao;
 import favorite.dao.FavoriteDao;
 import favorite.dto.Favorite;
 import global.dto.Main;
@@ -23,6 +23,7 @@ public class MainPageService {
 	CalendarDao calendarDao = new CalendarDao();
 	ProfileDao profileDao = new ProfileDao();
 	CoffeeListDao coffeeListdao = new CoffeeListDao();
+	CustomBoardListDao customBoardListDao = new CustomBoardListDao();
 	
 	public Main showAuthedMain(String memberId) {
 		Connection conn = null;
@@ -30,6 +31,7 @@ public class MainPageService {
 		Main main = null;
 		Calendar todaysCaffeine = null;
 		HashMap<Integer, Favorite> favMap = null;
+		
 		
 		Date date = new Date(System.currentTimeMillis());
 		
@@ -54,6 +56,7 @@ public class MainPageService {
 			
 			main = new Main(favMap,calculationResult);
 			main.setRecommendedIntake(weight);
+			
 			return main;
 		}catch (SQLException e) {
 			
@@ -62,6 +65,7 @@ public class MainPageService {
 			JdbcUtil.close(conn);
 		}
 	}
+	
 	public Main showMain() {
 		Connection conn = null;
 		Main main = null;
@@ -81,4 +85,6 @@ public class MainPageService {
 			JdbcUtil.close(conn);
 		}
 	}
+	
+	
 }

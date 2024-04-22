@@ -17,7 +17,9 @@ public class CustomBoardAddHandler implements CommandHandler {
 		
 		CustomBoardAddService service = new CustomBoardAddService();
 		service.addList(request, response);
-			response.sendRedirect(request.getContextPath() + "/CustomBoardListHandler.do");
+		
+		
+		response.sendRedirect(request.getContextPath() + "/CustomBoardListHandler.do");
 		
 		
 		return null;
