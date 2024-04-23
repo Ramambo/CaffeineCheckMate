@@ -75,8 +75,9 @@ public class FrontController extends HttpServlet {
 			} catch (Exception e) {
 				throw new ServletException(e);
 			}
-		}
-		request.getRequestDispatcher(viewPage).forward(request, response);
+		}  if(viewPage != null) {
+            request.getRequestDispatcher(viewPage).forward(request, response);
+        }
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doPost");
