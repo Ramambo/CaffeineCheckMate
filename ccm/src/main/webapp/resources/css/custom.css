@@ -56,8 +56,8 @@ button:hover{
 }
 
 img {
-  width: 230px;
-  height: 230px;
+  width: 17vw;
+  height: 30vh;
   object-fit: cover;
   border-radius:50%; /* 이미지사진 모양 (현재동글) */
 }
