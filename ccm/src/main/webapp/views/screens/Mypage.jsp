@@ -19,6 +19,12 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- fullcalender -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <!--fullcalendar 언어 설정관련 script -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales-all.js"></script>
 </head>
 	<body>
 	    <div class="container">
@@ -68,6 +74,8 @@
 	        <hr>
 	        <h2>카페인 신호등</h2>
 	        <div class="table-responsive">
+	        	<div id="calendar"></div>
+	        	<!-- 
 	            <table class="table table-bordered table-hover">
 	                <thead class="table-info">
 	                    <tr align="center">
@@ -97,6 +105,7 @@
 	                    </c:choose>
 	                </tbody>
 	            </table>
+	            -->
 	        </div>
 	        <hr>
 	        <h2>내가 작성한 레시피</h2>
@@ -191,6 +200,43 @@
 
 		<script>
 			const isAuth = "${isAuth}"==="true"? true : false;
+
+			<!--풀카렌더 셋팅-->
+			document.addEventListener('DOMContentLoaded', function() {
+		        var calendarEl = document.getElementById('calendar');
+		        var calendar = new FullCalendar.Calendar(calendarEl, {
+		            initialView : 'dayGridMonth', // 초기 로드 될때 보이는 캘린더 화면(기본 설정: 달)
+		            headerToolbar : { // 헤더에 표시할 툴 바
+		                start : 'prev next today',
+		                center : 'title',
+		                end : 'dayGridMonth,dayGridWeek,dayGridDay'
+		            },
+		            titleFormat : function(date) {
+		                return date.date.year + '년 ' + (parseInt(date.date.month) + 1) + '월';
+		            },
+		        
+		            //initialDate: '2021-07-15', // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.)
+		            selectable : true, // 달력 일자 드래그 설정가능
+		            droppable : true,
+		            editable : true,
+		            nowIndicator: true, // 현재 시간 마크
+		            locale: 'ko', // 한국어 설정
+		            events: [
+		            	//핸들러에서 담은 healthList Dto를 jstl문법으로 {} 영역을 출력한다.
+		                <c:forEach var="healthlight" items="${mypages.healthLightDTO}">
+		                    {
+		                        color: '${healthlight.CAL_COLOR}',
+		                        title: '${healthlight.CAL_DAILYCF}',
+		                        start: '${healthlight.CAL_DATE}',
+		                        end: '${healthlight.CAL_DATE}',
+		                        rendering : "background"
+		                        //backgroundColor:'${healthlight.CAL_COLOR}' 일정색
+		                    },
+		                </c:forEach>
+		            ] 
+		        });
+		        calendar.render();
+		    });        
 		</script>
 		<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
 		<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script> 

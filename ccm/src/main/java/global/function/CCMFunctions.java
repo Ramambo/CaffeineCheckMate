@@ -26,4 +26,4 @@ public class CCMFunctions {
 		}
 		return color;
 	}
-}
+} 

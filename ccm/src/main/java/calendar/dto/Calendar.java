@@ -8,7 +8,6 @@ public class Calendar {
 	int CAL_DAILYCF = 0;
 	String CAL_COLOR;
 	
-
 	public Calendar(Date cAL_DATE, String m_ID, int cAL_DAILYCF, String cAL_COLOR) {
 		CAL_DATE = cAL_DATE;
 		M_ID = m_ID;
@@ -39,5 +38,11 @@ public class Calendar {
 	public void setCAL_COLOR(String cAL_COLOR) {
 		CAL_COLOR = cAL_COLOR;
 	}
+	@Override
+	public String toString() {
+		return "Calendar [CAL_DATE=" + CAL_DATE + ", M_ID=" + M_ID + ", CAL_DAILYCF=" + CAL_DAILYCF + ", CAL_COLOR="
+				+ CAL_COLOR + "]";
+	}
+	
 
 }
