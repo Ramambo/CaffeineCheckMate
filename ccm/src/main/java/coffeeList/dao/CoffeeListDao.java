@@ -260,8 +260,7 @@ public class CoffeeListDao {
 				coffee = new Coffee(
 						rs.getInt("C_NO"),
 						rs.getInt("C_CAFFEINE"),
-						rs.getString("C_IMG_COPY")
-						);
+						rs.getString("C_IMG_COPY"));
 			}
 			return coffee;
 		} finally {
