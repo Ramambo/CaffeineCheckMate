@@ -7,7 +7,10 @@
 	float: left;
 }
 
-
+.cus-box{
+    overflow: auto;
+    height: 170px;
+}
 /*---------- 옵션 버튼 ----------*/
 .dropdown {
     display: inline-block;
@@ -25,8 +28,8 @@ float: right;
  button.dropdown{
   border:none;
   border-radius:5px;
-  padding:15px 30px;
-  font-size:18px;
+  padding: 0.5vw 2vh;
+  font-size:1em;
   cursor:pointer;
 } 
  
@@ -70,12 +73,6 @@ img {
   /* border-radius:50%; */ /* 이미지사진 모양 (현재동글) */
 }
 
-img {
-  width: 17vw;
-  height: 30vh;
-  object-fit: cover;
-  border-radius:50%; /* 이미지사진 모양 (현재동글) */
-}
 #board {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -105,7 +102,6 @@ img {
 .boardTextRigth{
 	text-align: right; 
 }
-
 
 /*---------- grid-set ----------*/
 section{

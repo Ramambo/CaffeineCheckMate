@@ -80,9 +80,7 @@ $(document).ready(function(){
 		let decaf = 'null';
 		
 		 $(".dropdown").click(function(){
-			let Dropdowns = $(this).next(".dropdown-options");
-			$(".dropdown-options").not(Dropdowns).slideUp();
-			Dropdowns.slideToggle();
+		        $(this).next(".dropdown-options").slideToggle();
 		    });
 
 		    $("#shotButton + .dropdown-options li").click(function(){
@@ -90,6 +88,7 @@ $(document).ready(function(){
 	            let selectedText = $(this).text();
 	            $("#shotButton").text(selectedText);
 	            $("#shotButton").next(".dropdown-options").slideToggle();
+		        console.log("선택된 샷:", shot);
 		        sendData();
 		    });
 		    $("#milkButton + .dropdown-options li").click(function(){
@@ -97,6 +96,7 @@ $(document).ready(function(){
 	            let selectedText = $(this).text();
 	            $("#milkButton").text(selectedText);
 	            $("#milkButton").next(".dropdown-options").slideToggle();
+		        console.log("선택된 우유:", milk);
 		        sendData();
 		    });
 
@@ -104,6 +104,7 @@ $(document).ready(function(){
 		        syrup = $(this).attr("id");
 		        $(this).closest(".divdropdown").find(".dropdown").text($(this).text());
 		        $(this).closest(".dropdown-options").slideToggle();
+		        console.log("선택된 시럽:", syrup);
 		        sendData();
 		    });
 
@@ -111,6 +112,7 @@ $(document).ready(function(){
 		        topping = $(this).attr("id");
 		        $(this).closest(".divdropdown").find(".dropdown").text($(this).text());
 		        $(this).closest(".dropdown-options").slideToggle();
+		        console.log("선택된 토핑:", topping);
 		        sendData();
 		    });
 
@@ -118,6 +120,7 @@ $(document).ready(function(){
 		        decaf = $(this).attr("id");
 		        $(this).closest(".divdropdown").find(".dropdown").text($(this).text());
 		        $(this).closest(".dropdown-options").slideToggle();
+		        console.log("선택된 디카페인:", decaf);
 		        sendData();
 		    });
 
@@ -200,11 +203,12 @@ function searchlist(data){
     });
 }
 	
- $(window).on("scroll", function() {
+	
+/*$(window).on("scroll", function() {
 	var scrollTop = $(window).scrollTop(); // 위로 스크롤된 길이
 	var windowsHeight = $(window).height(); //웹브라우저의 창의 높이
 	var documentHeight = $(document).height(); // 문서 전체의 높이
-	var isBottom = scrollTop + windowsHeight + 10 >= documentHeight;
+	var isBottom = scrollTop + windowsHeight + 1 >= documentHeight;
 	
 	if (isBottom) {
 		//만일 현재 마지막 페이지라면
@@ -216,6 +220,30 @@ function searchlist(data){
 		}
 	}
 });
+*/
+const cusBox = document.querySelector(".cus-box");
+console.log(cusBox);
+function scroller() {
+	console.log("scroll event");
+	// 스크롤 위치, 창의 높이, 문서 전체의 높이 계산
+	var scrollTop = cusBox.scrollTop; // 위로 스크롤된 길이
+	var windowHeight = cusBox.clientHeight; // 웹 브라우저 창의 높이
+	var documentHeight = cusBox.scrollHeight; // 문서 전체의 높이
+	
+	// 문서 맨 아래에 도달했는지 확인
+	var isBottom = scrollTop + windowHeight +10 >= documentHeight;
+	
+	if (isBottom) {
+		console.log("scroll");
+		if (allcount <= 0) {
+			return false; // 함수 종료
+		} else {
+			list(allcount - 8); // 추가로 받을 리스트 ajax 처리
+			allcount -= 8; // allcount 감소
+		}
+	}
+}
+cusBox.addEventListener("scroll", scroller);
 	
 	
 function list(allcount){
@@ -261,14 +289,3 @@ function list(allcount){
 		
 	});//ajax끝 			
 }
-
-
-
-
-
-
-
-    
-    
-
-
