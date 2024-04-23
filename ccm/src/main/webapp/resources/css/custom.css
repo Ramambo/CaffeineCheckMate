@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+.cus-box{
+    overflow: auto;
+    height: 170px;
+}
+
 
 /*---------- 검색창 ----------*/
 #searchInput {
@@ -9,7 +14,7 @@
 
 .cus-box{
     overflow: auto;
-    height: 170px;
+    height: 500px;
 }
 /*---------- 옵션 버튼 ----------*/
 .dropdown {
@@ -113,7 +118,7 @@ section{
 	text-align: center;
 	height: 80vh;
 	margin: 1em;
-	overflow: auto;
+	/* overflow: auto; */
 }
 
 @media screen and (max-width: 900px) {
@@ -157,6 +162,8 @@ section{
     place-items: center;
 	grid-row: 2;
 } 
+
+
 
 /*3행*/
 .section_col_1_row_3 {
@@ -203,6 +210,11 @@ section{
 
 /*4행*/
 .section_col_1-to-12_row_4 {
+    grid-column: 1 / span 12;
+    place-items: center;
+	grid-row: 4;
+} 
+span.cus-box {
     grid-column: 1 / span 12;
     place-items: center;
 	grid-row: 4;
