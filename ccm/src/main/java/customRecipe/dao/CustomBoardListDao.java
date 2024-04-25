@@ -51,44 +51,54 @@ public class CustomBoardListDao {
 	
 	//메인 리스트
 	public  ArrayList<CustomBoardListDto> getmainList(Connection con) throws SQLException {
-		//String sql="select CUS_NO,M_NO,C_NO,CUS_NAME,CUS_CONTENT,CUS_REGDATE,CUS_SUMGOOD from custom order by cus_regdate desc";
-		//위 sql은 cus_no조회하는 쿼리문
-		String sql = "select num,cus_no,m_id,c_no,CUS_TITLE,CUS_CONTENT,CUS_REGDATE,CUS_SUMGOOD from custom_view";
+		String sql = "select num,cus_no,m_id,c_no,CUS_TITLE,CUS_CONTENT,CUS_REGDATE,CUS_SUMGOOD from custom_view where num=?";
 		PreparedStatement pstm = con.prepareStatement(sql);
+		ResultSet rs = null;
+		ArrayList<CustomBoardListDto> list = new ArrayList<>();
+
+		
 		
 		int allcount = allCount(con);  //33개
+		
 		int[] arr = new int[3];
-		for(int i=0;i<3;i++) {
+		for(int i=0; i<arr.length; i++) {
 			int a = (int)(Math.random()*allcount)+1;
 			arr[i] = a;
+			for(int j=0;j<i; j++) {
+				if(arr[j]==arr[i])
+				i--;
+			}
+		
+		
 		}
-		
-		ResultSet rs = pstm.executeQuery();
-		
-		
-		ArrayList<CustomBoardListDto> list = new ArrayList<>();
-		
-		while(rs.next()){
+			for(int i=0;i<arr.length;i++) {
+			pstm.setInt(1, arr[i]);
+			rs = pstm.executeQuery();
 			
+			while(rs.next()){
 //				int CUS_NO = rs.getInt(1);
-			CustomBoardListDto dto = new CustomBoardListDto();
+				CustomBoardListDto dto = new CustomBoardListDto();
+				
+				dto.setCUS_NUM(rs.getInt(1));
+				dto.setCUS_NO(rs.getInt(2)); 
+				dto.setm_id(rs.getString(3));
+				dto.setc_no(rs.getString(4));
+				dto.setcus_title(rs.getString(5));
+				dto.setCUS_CONTENT(rs.getString(6));
+				
+				dto.setCUS_REGDATE(rs.getString(7));
+				dto.setCUS_SUMGOOD(rs.getString(8));
+				
+				getimg(dto,con); 
+				list.add(dto);
+			}
+			}
 			
-			dto.setCUS_NUM(rs.getInt(1));
-			dto.setCUS_NO(rs.getInt(2)); 
-			dto.setm_id(rs.getString(3));
-			dto.setc_no(rs.getString(4));
-			dto.setcus_title(rs.getString(5));
-			dto.setCUS_CONTENT(rs.getString(6));
-			
-			dto.setCUS_REGDATE(rs.getString(7));
-			System.out.println(rs.getString(7));
-			dto.setCUS_SUMGOOD(rs.getString(8));
-			
-			getimg(dto,con); 
-			list.add(dto);
-		}
 		JdbcUtil.close(rs); JdbcUtil.close(pstm);
 		return list;
+		
+		
+		
 	} 	
 
 	

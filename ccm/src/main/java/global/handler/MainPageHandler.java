@@ -28,6 +28,7 @@ public class MainPageHandler extends HttpServlet implements CommandHandler {
     	if(memberId != null ) {
     		System.out.println("authed");
     		main = mainPageService.showAuthedMain(memberId);
+    		System.out.println(main + ": handler main");
     	} else { // 비로그인상태    		
     		System.out.println("not authed");
     		main = mainPageService.showMain();

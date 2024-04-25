@@ -25,7 +25,7 @@ public class CustomBoardViewService {
 			
 			ArrayList<CustomBoardListDto> list = dao.boardview(con,num);
 			
-			
+			System.out.println(list + "list값");
 			request.setAttribute("list", list);
 			return list;
 			

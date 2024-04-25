@@ -3,6 +3,7 @@
 
 <%@ page import="java.util.*" %>
 <%@ page import="global.dto.Main" %>
+<%@ page import="customRecipe.dto.CustomBoardListDto" %>
 <%@ page import="favorite.dto.Favorite" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -16,11 +17,31 @@
 	%>
 
     <link rel="stylesheet" href="/resources/css/sample.css">
+    <link rel="stylesheet" href="/resources/css/custom.css">
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+
+
+<div>
+<c:forEach var="item" items="${main.customBoardListDao}">
+ <li>
+       <a href="CustomBoardViewHandler.do?CUS_NUM=${item.cus_num}">
+       <div>
+           <img src="upload/${item.cus_img_realname}" alt="Image" id="img">
+           <div class="boardTextBox">
+  <%--          <span class="boardTextLeft"><b>${item.m_id} </b></span> 
+           <span class="boardTextRight">${item.cus_regdate} </span><br/>
+           <span class="boardTextLeft"><b>${item.cus_title}</b></span><br/>
+           <span class="boardTextLeft">${item.cus_content}</span> --%>
+           </div>
+       </div>
+       </a>
+      </li>
+</c:forEach>
+</div>
 
     <!--임시 커피 목록-->
     <h2>임시 커피목록</h2>
