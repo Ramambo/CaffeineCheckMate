@@ -8,12 +8,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- css연결 -->
+<link rel="stylesheet" href="/resources/css/custom.css"/>
+<link rel="stylesheet" href="/resources/css/common.css" />
+<link rel="stylesheet" href="/resources/css/mypage.css" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 	<%
 	boolean isAuth = request.getSession().getAttribute("AUTH_USER_ID") != null ? true:false;
 	pageContext.setAttribute("isAuth", isAuth);
 	%>
 <meta charset="UTF-8">
-	<title>Mypage</title>
     <!-- 부트스트랩 CDN 추가 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -27,14 +32,44 @@
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales-all.js"></script>
 </head>
 	<body>
+		<span class="wrapper" style="display: inline-block;">
+			<!-- 헤더 -->
+			<%@ include file="/views/components/header.jsp" %>
+	
 	    <div class="container">
-	        <h2>Mypage 입니당</h2>
+	        <h2>Mypage</h2>
 	        <hr>
-	        <h2>내 프로필</h2>
-	        <!-- 프로필 수정 버튼 -->
-	        <form action="EditMyProfile.do">
-	            <a href="/editMyProfilePageMove.do" class="btn btn-primary mb-3">프로필 수정</a>
-	        </form>
+	        <div class="myprofile">
+		        <div><h2>내 프로필&nbsp&nbsp</h2></div>
+		        <div>
+			        <!-- 프로필 수정 버튼 -->
+			        <form action="EditMyProfile.do">
+			            <a href="/editMyProfilePageMove.do" class="btn btn-primary mb-3">프로필 수정</a>
+			        </form>
+		        </div>
+	        </div>
+	        
+	        <!-- 내 프로필박스 -->
+	        <div>
+	        	<!-- 프로필사진 -->
+		        <div>
+		        	<c:choose>
+                    	<c:when test="${not empty mypages.userProfileDTO.p_IMG_COPY}">
+                       		<td><img width="150px;"  height="150px" src="/resources/profile/${mypages.userProfileDTO.p_IMG_COPY}"></td>
+                     	</c:when>
+                     	<c:otherwise>
+                       		<td>등록된 프로필 이미지가 없습니다.</td>
+                     	</c:otherwise>
+               		</c:choose>
+
+		        
+		        </div>
+		        <!-- 닉네임, 아이디 -->
+		        <div></div>
+	        </div>
+	        
+	        
+	        
 	        <div class="table-responsive">
             	<table class="table table-bordered table-hover">
 	                <thead class="table-success">
@@ -71,41 +106,42 @@
 	                </tbody>
 	            </table>
 	        </div>
+	        
 	        <hr>
 	        <h2>카페인 신호등</h2>
 	        <div class="table-responsive">
 	        	<div id="calendar"></div>
-	        	<!-- 
-	            <table class="table table-bordered table-hover">
-	                <thead class="table-info">
-	                    <tr align="center">
-	                        <th>섭취일</th>
-	                        <th>캘린더 색</th>
-	                        <th>섭취량</th>
-	                    </tr>
-	                </thead>
-	                <tbody>
-	                    <c:choose>
-	                        <c:when test="${empty mypages}">
-	                            <tr align="center">
-	                                <td colspan="3">
-	                                    <b>카페인 섭취량이 없습니다.</b>
-	                                </td>
-	                            </tr>
-	                        </c:when>
-	                        <c:otherwise>
-	                            <c:forEach var="healthlight" items="${mypages.healthLightDTO}">
-	                                <tr align="center">
-	                                    <td>${healthlight.CAL_DATE}</td>
-	                                    <td>${healthlight.CAL_COLOR }</td>
-	                                    <td>${healthlight.CAL_DAILYCF }</td>
-	                                </tr>
-	                            </c:forEach>
-	                        </c:otherwise>
-	                    </c:choose>
-	                </tbody>
-	            </table>
-	            -->
+<!-- 캘린더 이전 표
+<table class="table table-bordered table-hover">
+<thead class="table-info">
+<tr align="center">
+<th>섭취일</th>
+<th>캘린더 색</th>
+<th>섭취량</th>
+</tr>
+</thead>
+<tbody>
+<c:choose>
+<c:when test="${empty mypages}">
+<tr align="center">
+<td colspan="3">
+<b>카페인 섭취량이 없습니다.</b>
+</td>
+</tr>
+</c:when>
+<c:otherwise>
+<c:forEach var="healthlight" items="${mypages.healthLightDTO}">
+<tr align="center">
+<td>${healthlight.CAL_DATE}</td>
+<td>${healthlight.CAL_COLOR }</td>
+<td>${healthlight.CAL_DAILYCF }</td>
+</tr>
+</c:forEach>
+</c:otherwise>
+</c:choose>
+</tbody>
+</table>
+-->
 	        </div>
 	        <hr>
 	        <h2>내가 작성한 레시피</h2>
@@ -246,5 +282,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/progressbar.js@1.1.1/dist/progressbar.min.js" integrity="sha256-CjGwkk3nsu5BkdGgSjediSja+n8zB6HARhF/eZxtO0g=" crossorigin="anonymous"></script>
 
 		<script src="/resources/js/favoritelist.js" type="text/babel"></script>
+		
+		</span>
 	</body>
 </html>
