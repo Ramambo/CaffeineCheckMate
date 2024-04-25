@@ -60,7 +60,7 @@ public class CustomBoardListDao {
 		
 		int allcount = allCount(con);  //33개
 		
-		int[] arr = new int[3];
+		int[] arr = new int[9];
 		for(int i=0; i<arr.length; i++) {
 			int a = (int)(Math.random()*allcount)+1;
 			arr[i] = a;

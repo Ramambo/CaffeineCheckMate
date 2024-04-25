@@ -24,7 +24,6 @@
     <p>제목 <input type="text" size="30" id="cus_name" name="cus_name" value="${title}"></p>
     내용<p><textarea cols="50" rows="10" id="cus_content" name="cus_content">${content}</textarea></p>
     
-    <!-- @@@@@@@@ -->
     <div>
   이미지: 
   <label class="input-file-button" for="file">
@@ -34,7 +33,7 @@
     </div>
     <br/>
 <img id="preview" src="/upload/${img}" alt="미리보기" style="max-width: 250px; max-height: 250px;">
- <!-- @@@@@@@@ -->
+
 <div class="selection-group">
     <select name="shot" id="shot">
         <option value="0">샷추가</option>
