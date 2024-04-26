@@ -21,11 +21,6 @@
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-div{
-	float : right;
-}
-</style>
 </head>
 <body>
 
@@ -35,12 +30,8 @@ div{
  <li>
        <a href="CustomBoardViewHandler.do?CUS_NUM=${item.cus_num}">
        <div>
-           <img src="upload/${item.cus_img_realname}" alt="Image" id="img">
            <div class="boardTextBox">
-  <%--          <span class="boardTextLeft"><b>${item.m_id} </b></span> 
-           <span class="boardTextRight">${item.cus_regdate} </span><br/>
-           <span class="boardTextLeft"><b>${item.cus_title}</b></span><br/>
-           <span class="boardTextLeft">${item.cus_content}</span> --%>
+           <img src="upload/${item.cus_img_realname}" alt="Image" id="img">
            </div>
        </div>
        </a>

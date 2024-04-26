@@ -90,7 +90,6 @@ $(document).ready(function() {
 		let selectedText = $(this).text();
 		$("#shotButton").text(selectedText);
 		$("#shotButton").next(".dropdown-options").slideToggle();
-		console.log("선택된 샷:", shot);
 		sendData();
 	});
 	$("#milkButton + .dropdown-options li").click(function() {
@@ -98,7 +97,6 @@ $(document).ready(function() {
 		let selectedText = $(this).text();
 		$("#milkButton").text(selectedText);
 		$("#milkButton").next(".dropdown-options").slideToggle();
-		console.log("선택된 우유:", milk);
 		sendData();
 	});
 
@@ -106,7 +104,6 @@ $(document).ready(function() {
 		syrup = $(this).attr("id");
 		$(this).closest(".divdropdown").find(".dropdown").text($(this).text());
 		$(this).closest(".dropdown-options").slideToggle();
-		console.log("선택된 시럽:", syrup);
 		sendData();
 	});
 
@@ -114,7 +111,6 @@ $(document).ready(function() {
 		topping = $(this).attr("id");
 		$(this).closest(".divdropdown").find(".dropdown").text($(this).text());
 		$(this).closest(".dropdown-options").slideToggle();
-		console.log("선택된 토핑:", topping);
 		sendData();
 	});
 
@@ -122,7 +118,6 @@ $(document).ready(function() {
 		decaf = $(this).attr("id");
 		$(this).closest(".divdropdown").find(".dropdown").text($(this).text());
 		$(this).closest(".dropdown-options").slideToggle();
-		console.log("선택된 디카페인:", decaf);
 		sendData();
 	});
 
