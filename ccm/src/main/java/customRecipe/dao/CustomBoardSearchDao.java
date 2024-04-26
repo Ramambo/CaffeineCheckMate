@@ -30,7 +30,7 @@ public ArrayList<CustomBoardListDto> searchlist(String content,Connection con) t
 			
 			dto.setCUS_NUM(rs.getInt(1));
 			dto.setCUS_NO(rs.getInt(2));
-			dto.setm_id(rs.getString(3));
+			dto.setm_id(boardnick(con, rs.getString(3)));
 			dto.setc_no(rs.getString(4));
 			dto.setcus_title(rs.getString(5));
 			dto.setCUS_CONTENT(rs.getString(6));
@@ -83,5 +83,24 @@ public ArrayList<CustomBoardListDto> searchhash(String cus_no,Connection con) th
 		return list;
 	
 	}
+public String boardnick(Connection con,String m_id) throws SQLException {
+	 String sql = "select m_nickname from member where m_id=?";
+	 PreparedStatement pstm = con.prepareStatement(sql);
+	 pstm.setString(1, m_id);
+	 ResultSet rs = pstm.executeQuery();
+	 String nick=null;
+	 
+	 while(rs.next()) {
+		nick =rs.getString(1);
+		
+	}
+	 JdbcUtil.close(pstm);
+	 JdbcUtil.close(rs);
+	 if(nick==null) {
+		 nick = "비회원";
+	 }
+	 System.out.println(nick + ": nick");
+	return nick;
+}
 
 }

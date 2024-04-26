@@ -126,6 +126,7 @@
 		
 	</section>
 	
+<script type="text/javascript" src="/resources/js/custom.js"></script>
 	<!-- 모달폼 -->
 	<div id="modal" class="modal-container">
 	    <button onclick="closeModal()" class="modal_close">닫기</button>
@@ -135,5 +136,4 @@
 	
 </span>
 </body>
-<script type="text/javascript" src="/resources/js/custom.js"></script>
 </html>

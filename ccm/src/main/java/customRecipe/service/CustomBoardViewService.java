@@ -3,6 +3,7 @@ package customRecipe.service;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,10 +20,8 @@ public class CustomBoardViewService {
 		Connection con = null;
 		CustomBoardViewDao dao = new CustomBoardViewDao();
 		try {
-			
 			String num = request.getParameter("CUS_NUM");
 			con = ConnectionProvider.getConnection();
-			
 			ArrayList<CustomBoardListDto> list = dao.boardview(con,num);
 			
 			System.out.println(list + "list값");

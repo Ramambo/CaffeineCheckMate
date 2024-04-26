@@ -31,7 +31,7 @@ public class CustomBoardTag extends HttpServlet {
 		String syrup =(String)request.getParameter("syrup");
 		String topping =(String)request.getParameter("topping");
 		String decaf =(String)request.getParameter("decaf");
-		
+		 
 			CustomBoardHashDao hashdao = new CustomBoardHashDao();
 			CustomBoardHashDto hashdto = new CustomBoardHashDto(shot,milk,syrup,topping,decaf);
 			CustomBoardSearchDao dao = new CustomBoardSearchDao();

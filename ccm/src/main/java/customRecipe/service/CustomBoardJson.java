@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 import connection.ConnectionProvider;
 import customRecipe.dao.CustomBoardListDao;
@@ -28,8 +29,8 @@ public class CustomBoardJson extends HttpServlet {
         CustomBoardListDao dao = new CustomBoardListDao();
         Connection con = null;
         
-        
         JSONObject json = new JSONObject();
+        
 		try {
 			con = ConnectionProvider.getConnection();
 

@@ -32,7 +32,7 @@ public class CustomBoardUpdateService {
 			 
 			ServletContext context = request.getSession().getServletContext();
 			String directory = context.getRealPath("/upload/");
-			int maxSize = 1024*1024*5;
+			int maxSize = 1024*1024*20;
 			String encoding =  "UTF-8";
 			
 			
@@ -42,13 +42,26 @@ public class CustomBoardUpdateService {
 			HttpSession session = request.getSession(false);
 			String m_id = (String)session.getAttribute("AUTH_USER_ID");
 			String a = mp.getParameter("img");
+			System.out.println(a);
+			
 			
 //			String c_no = mp.getParameter("c_no");  아직 태그 미생성,c_no는 커피리스트에서 받아야됨
 			String c_no = "1";
 			String cus_name = mp.getParameter("cus_name");
 			String cus_content = mp.getParameter("cus_content");
-			String cus_img= mp.getOriginalFileName("file");
-			String cus_img_realname = mp.getFilesystemName("file");
+			String cus_img= mp.getOriginalFileName("img");
+			String cus_img_realname = mp.getFilesystemName("img");
+			
+			String a1 = mp.getParameter("hiddenFile");
+			System.out.println(cus_img);
+			System.out.println(cus_img_realname	);
+			
+			
+			
+			
+			
+			
+			
 			String num = mp.getParameter("num");
 		
 			

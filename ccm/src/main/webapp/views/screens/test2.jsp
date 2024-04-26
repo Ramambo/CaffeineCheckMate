@@ -21,11 +21,16 @@
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+div{
+	float : right;
+}
+</style>
 </head>
 <body>
 
 
-<div>
+<div id="imgboard">
 <c:forEach var="item" items="${main.customBoardListDao}">
  <li>
        <a href="CustomBoardViewHandler.do?CUS_NUM=${item.cus_num}">

@@ -313,6 +313,15 @@ function showCustomModal(pageURL) {
 }
 
 // 모달을 닫는 함수
+
+$(document).ready(function(){
+	    $(document).keydown(function(event) {
+	        if (event.which === 27) {
+	        	closeModal();
+	        }
+	    });
+	});
+	
 function closeModal() {
 	var modal = document.getElementById("modal");
 	modal.style.display = "none";
