@@ -11,7 +11,7 @@ import mypage.dto.UserProfileDTO;
 
 public class Main {
 	HashMap<Integer, Object> favorites;
-	UserProfileDTO userProfile;
+	UserProfileDTO userProfileDTO;
 	int calculationResult=0;
 	double recommendedIntake =400;
 	String color = "#BFFE01";

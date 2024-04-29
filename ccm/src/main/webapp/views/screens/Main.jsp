@@ -40,6 +40,17 @@
 			<!-- 메인페이지 상단 우측 박스 -->
 			<div class="main_col_2_row1">
 				<div class="main_profile">
+					<div class="main_profile__column1">
+						<div class="main_profile__nickname-box">
+							<span class="main_profile__nickname">닉네임 : ${main.userProfileDTO.m_NICKNAME}</span>
+						</div>
+						<div class="main_profile__btn-box">
+							<button class="main_profile__btn">프로필 수정</button>
+						</div>
+					</div>
+					<div class="main_profile__column2">
+						<img class="main_profile__img" width="150px;"  height="150px" src="/resources/profile/${main.userProfileDTO.p_IMG_COPY}" alt=""/>
+					</div>
 				</div>
 			</div>
 			
@@ -113,6 +124,7 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> 
 
 <script src="https://kit.fontawesome.com/9e2cfcdf3a.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/progressbar.js@1.1.1/dist/progressbar.min.js" integrity="sha256-CjGwkk3nsu5BkdGgSjediSja+n8zB6HARhF/eZxtO0g=" crossorigin="anonymous"></script>
 
 <script src="/resources/js/favoritelist.js" type="text/babel"></script>
 <script src="/resources/js/calculator.js"></script>

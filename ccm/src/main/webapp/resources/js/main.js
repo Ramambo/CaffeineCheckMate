@@ -53,3 +53,9 @@ const goCoffeeListBtn = document.querySelector(".fav-btn__go-coffeelist");
 goCoffeeListBtn.addEventListener("click",function(){
     window.location.href = "/coffeeList.do"
 })
+
+//프로필수정.do
+const editProfileBtn = document.querySelector(".main_profile__btn");
+editProfileBtn.addEventListener("click", function(){
+    window.location.href = '/editMyProfilePageMove.do';
+})
