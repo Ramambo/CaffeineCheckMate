@@ -42,10 +42,4 @@ public class AddFavoriteAsync extends HttpServlet {
 		out.print(jsonString);
 		out.flush();	
 	}
-
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-	}
-
 }

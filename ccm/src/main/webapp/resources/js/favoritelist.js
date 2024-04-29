@@ -16,7 +16,7 @@ if (isAuth){
                         <div className="fp-item__info clickable textlenth">{fav[key]["C_NAME"]}</div>
                     </div>
                     <button className="fp-item__delete-btn clickable" onClick={deleteFavItem}>
-                    <i className="fa-solid fa-minus"></i>  
+                        <i className="fa-solid fa-minus"></i>  
                     </button>
                 </div>
                 ))}
@@ -26,7 +26,6 @@ if (isAuth){
     function render(data){
         ReactDOM.render(<App data={data}/>,root);
     }
-
 
     //즐겨찾기 박스 선택
     const favItems = root.children;
@@ -81,7 +80,6 @@ if (isAuth){
             return(response.json());
         })
         .then(data => {
-            // document.querySelector(".fav-box").removeChild(item);
             render(data);
         })
         .catch(error => {

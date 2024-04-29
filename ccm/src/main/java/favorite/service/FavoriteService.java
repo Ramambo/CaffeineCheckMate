@@ -113,7 +113,6 @@ public class FavoriteService {
 				coffeeListDao.plusFav(coffeeNo, conn);
 			}			
 			favlist = favoriteDao.getFavList(memberId, conn);
-			System.out.println("favlist fs : "+favlist.toString());
 			conn.commit();
 			return favlist;
 		} catch (SQLException e) {
