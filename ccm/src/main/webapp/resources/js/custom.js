@@ -28,10 +28,26 @@ $(document).ready(function() {
    });
 });
 
+
+var userDataElement = document.getElementById('userData');
+var userId = userDataElement.dataset.userId;
+
+
 $(document).ready(function() {
     $(".button_add").click(function(event){
-        if(typeof userid === 'undefined' || userid === null){
+	console.log("User ID:", userId);
+        if(!userId){
             alert("로그인 후 진행해주세요.");
+            event.preventDefault(); // 클릭 이벤트의 기본 동작을 중지
+            location.href = "/views/screens/login.jsp"; // 로그인 페이지로 이동
+        }
+    });
+});
+
+$(document).ready(function() {
+    $(".add_submit").click(function(event){
+        if(!userId){
+            alert("로그인 후 진행해주세요. 꼼수 ㄴㄴ");
             event.preventDefault(); // 클릭 이벤트의 기본 동작을 중지
             location.href = "/views/screens/login.jsp"; // 로그인 페이지로 이동
         }

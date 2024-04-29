@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="/resources/css/custom.css">
 <link rel="stylesheet" href="/resources/css/common.css" />
 
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript">
@@ -20,7 +21,7 @@
 
 </head>
 <body>
-
+<div id="userData" data-user-id="${AUTH_USER_ID}"></div>
 	<div class="wrapper">
 		<!-- 헤더 -->
 		<jsp:include page="/views/components/header.jsp" />
