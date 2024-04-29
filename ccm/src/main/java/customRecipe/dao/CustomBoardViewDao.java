@@ -32,6 +32,7 @@ public class CustomBoardViewDao {
 				
 				dto.setCUS_NO(rs.getInt(2));
 				dto.setm_id(boardnick(con, rs.getString(3)));
+				dto.setm_id(boardnick(con, rs.getString(3)));
 				dto.setc_no(rs.getString(4));
 				dto.setcus_title(rs.getString(5));
 				dto.setCUS_CONTENT(rs.getString(6));

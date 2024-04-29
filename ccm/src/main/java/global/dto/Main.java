@@ -6,7 +6,7 @@ import java.util.HashMap;
  */
 
 import customRecipe.dto.CustomBoardListDto;
-import favorite.dto.Favorite;
+
 
 public class Main {
 	HashMap<Integer, Object> favorites;
@@ -14,25 +14,17 @@ public class Main {
 	double recommendedIntake =400;
 	String color = "#BFFE01";
 	ArrayList<CustomBoardListDto> CustomBoardListDao;
-	
-	
 //	추천레시피 관련필드
-	public Main(ArrayList<CustomBoardListDto> CustomBoardListDao) {
-		this.CustomBoardListDao = CustomBoardListDao;
-	}
 	
-
 	public Main(HashMap favMap, int  calculatedResult) { //수정필요
 		this.favorites = favMap;
 		this.calculationResult = calculatedResult;
 	}
-	
 	public Main(HashMap favMap, int  calculatedResult,ArrayList<CustomBoardListDto> CustomBoardListDao) { //수정필요
 		this.favorites = favMap;
 		this.calculationResult = calculatedResult;
 		this.CustomBoardListDao = CustomBoardListDao;
 	}
-	
 	public ArrayList<CustomBoardListDto> getcustomBoardListDao() {
 		return CustomBoardListDao;
 	}
@@ -42,6 +34,7 @@ public class Main {
 		CustomBoardListDao = customBoardListDao;
 	}
 
+	
 	public HashMap<Integer, Object> getfavorites() {
 		return favorites;
 	}

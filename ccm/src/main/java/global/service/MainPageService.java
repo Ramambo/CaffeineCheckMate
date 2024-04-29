@@ -34,7 +34,6 @@ public class MainPageService {
 		Calendar todaysCaffeine = null;
 		HashMap<Integer, Favorite> favMap = null;
 		
-		
 		Date date = new Date(System.currentTimeMillis());
 		
 		int calculationResult = 0;
@@ -45,10 +44,9 @@ public class MainPageService {
 			
 			//즐겨찾기 목록 불러오기
 			favMap = favoriteDao.getFavList(memberId, conn);
-			System.out.println(favMap + ":favMap");
+			
 			//현재 저장된 섭취량 불러오기
 			todaysCaffeine = calendarDao.getTodaysRecord(memberId, date, conn);
-			System.out.println(todaysCaffeine + ":todaysCaffeine");
 			if (todaysCaffeine != null) {
 				calculationResult = todaysCaffeine.getCAL_DAILYCF();
 			}
@@ -56,15 +54,10 @@ public class MainPageService {
 			//프로필의 몸무게 값 가져오기
 			weight = profileDao.getWeight(memberId, conn);
 			
-			System.out.println(weight + "weight");
-			
 			ArrayList<CustomBoardListDto> list = new ArrayList<>();
 			list =customBoardListDao.getmainList(conn);
 			
 			main = new Main(favMap,calculationResult,list);
-		
-			main.setRecommendedIntake(weight);
-			
 			return main;
 		}catch (SQLException e) {
 			
@@ -73,7 +66,6 @@ public class MainPageService {
 			JdbcUtil.close(conn);
 		}
 	}
-	
 	public Main showMain() {
 		Connection conn = null;
 		Main main = null;
@@ -86,9 +78,6 @@ public class MainPageService {
 			ArrayList<CustomBoardListDto> list = new ArrayList<>();
 			list =customBoardListDao.getmainList(conn);
 			main = new Main(coffeeFavMap,0,list);
-			
-			
-			
 			return main;
 		}catch (SQLException e) {
 			
@@ -97,6 +86,4 @@ public class MainPageService {
 			JdbcUtil.close(conn);
 		}
 	}
-	
-	
 }

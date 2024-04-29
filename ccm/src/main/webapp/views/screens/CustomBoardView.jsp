@@ -13,29 +13,33 @@ HttpSession sessionId = request.getSession(false);
 String m_id = (String) sessionId.getAttribute("AUTH_USER_ID");
 %>
 <input type="hidden" id="m_id_hidden" value="<%=m_id%>">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
+
 <span class="wrapper" style="display: inline-block;">
 		<!-- 헤더 -->
-		<%@ include file="/views/components/header.jsp" %>
-		<!-- 섹션 시작 -->
+		<jsp:include page="/views/components/header.jsp" />
 
 		<div class="view_form">
 			<c:forEach var="item" items="${list}">
 				<div class="view_left_content">
-					<p><img src="upload/${item.cus_img_realname}" alt="Image" width="150"></p>
+					<img src="upload/${item.cus_img_realname}" alt="Image" class="image_view">
 				</div>	
+				
 				<div class="view_right_content">
-					<div>회원아이디: ${item.m_id}</div>
-					<p>제품아이디: ${item.c_no}</p>
-					<p>게시글제목: ${item.cus_title}</p>
-					<p>글내용: ${item.cus_content}</p>
-					<p>게시일: ${item.cus_regdate}</p>
-				</div>
-				<div class="view_right_content_row2">
+					<div class="view_id"><b>${item.m_id}</b></div>
+					<div class="view_regdate">${item.cus_regdate}</div>
+					<hr/><br/>
+					<div class="view_title"><b> ${item.cus_title}</b></div>
+					
+					<br/>
+					<div class="view_content_box">
+						<div class="view_content">${item.cus_content}</div>
+					</div>
+					
+					<br/><hr/>
 					<div class="option_tag">
 						<div>#${item.shot}샷</div>
 						<div>#${item.milkType}</div>
@@ -43,9 +47,11 @@ String m_id = (String) sessionId.getAttribute("AUTH_USER_ID");
 						<div>#${item.toppingType}</div>
 						<div>#${item.decaffeinated}</div>
 					</div>
+					
+					<br/>
 					<div>
 						<!-- 댓글 버튼 -->
-						<button onclick="showReplyModal('${item.cus_no}')">댓글</button>
+						<button class="reply_button" onclick="showReplyModal('${item.cus_no}')">댓글</button>
 					</div>
 				</div>
 			</c:forEach>
@@ -56,6 +62,7 @@ String m_id = (String) sessionId.getAttribute("AUTH_USER_ID");
 			<button onclick="closeModal()">닫기</button>
 			<div class="modal-content" id="modal-content"></div>
 		</div>
+</span>		
 
 </body>
 
@@ -95,13 +102,6 @@ String m_id = (String) sessionId.getAttribute("AUTH_USER_ID");
 		var modal = document.getElementById("modal");
 		modal.style.display = "none";
 	}
-	
-	$(document).ready(function(){
-	    $(document).keydown(function(event) {
-	        if (event.which === 27) {
-	        	closeModal();
-	        }
-	    });
-	});
 </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/progressbar.js@1.1.1/local-dev/main.min.css"> 
 </html>

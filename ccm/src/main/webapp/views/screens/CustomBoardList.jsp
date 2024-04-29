@@ -1,37 +1,34 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="/resources/css/custom.css">
 <link rel="stylesheet" href="/resources/css/common.css" />
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script type="text/javascript"> var allcount = ${allcount}; </script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script type="text/javascript">
+	var allcount = ${allcount};
+</script>
 
 <meta charset="UTF-8">
 <title>커스텀레시피</title>
 
 </head>
 <body>
-	
-	<span class="wrapper" style="display: inline-block;">
+
+	<div class="wrapper">
 		<!-- 헤더 -->
-		<%@ include file="/views/components/header.jsp" %>
+		<jsp:include page="/views/components/header.jsp" />
 		<!-- 섹션 시작 -->
 		<section class="container">
-			<div class="section_col_1-to-4_row_1">
-				<span>
-					<button id="test" class="button_home" type="button" onclick="location.href='/views/screens/testView.jsp'">Home</button>
-				</span>
-				
-				<span>
+			<div class="section_col_1-to-12_row_1">
+					<button id="test" class="button_home" type="button" onclick="location.href='/main.do'">Home</button>
 					<button id="edit" class="button_add" type="button" onclick="showCustomModal('/views/screens/CustomBoardAdd.jsp')">Add</button>
-				</span>
-				<span>
 					<input type="text" id="searchInput" placeholder="    Search">
-					<span id="searchResult"></span>
-				</span>
+					<div id="searchResult"></div>
 			</div>
 			
 			
@@ -126,14 +123,12 @@
 		
 	</section>
 	
-<script type="text/javascript" src="/resources/js/custom.js"></script>
 	<!-- 모달폼 -->
 	<div id="modal" class="modal-container">
 	    <button onclick="closeModal()" class="modal_close">닫기</button>
 	    <div class="modal-content" id="modal-content">
 	    </div>
 	</div>
-	
-</span>
 </body>
+<script type="text/javascript" src="/resources/js/custom.js"></script>
 </html>
