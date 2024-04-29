@@ -20,9 +20,12 @@
   }
   
   /*전체 박스 나누기*/
-.container{
+.mypage-container{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    overflow-y: auto;
+    height: 70%;
+    width: 100%;
 }
 .item:nth-child(3) {
 	grid-column: 1 / 3 ;
@@ -32,18 +35,43 @@
 	grid-column: 1 / 3;
 	grid-row: 3 / 4;
 }
-
-/* div 가로로 정렬 */
-.tonari{
-  display: flex;
-	flex-direction : row;
-  align-items: center;
-}
-
 .mypageh2{
-	padding : 20px;
+  height: 10%;
+}
+.mypageh2 h2{
 	  font-family : "Jua", sans-serif;
 }
+
+/* div 가로로 정렬 */
+.profilebox{
+  display: flex;
+  justify-content: center;
+	flex-direction : column;
+  align-items: center;
+}
+.profilebox__1{
+  width: 100%;
+  height: 30%;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.hr-sect__1{
+  text-align: center;
+}
+.hr-sect__2{
+  
+}
+.profilebox__2{
+  width: 100%;
+  height: 70%;
+  border: 1px solid black;
+}
+
+
 
 .item{
     border: 2px solid gray;
@@ -52,8 +80,13 @@
     font-size : larger;
 }
 
+
+
+
+
+
+
 #id.profileimg {
-     width: 30vw;
 	  object-fit: cover;
 	  border-radius: 10px 10px 10px 10px;
 	  aspect-ratio: 3/3.5;

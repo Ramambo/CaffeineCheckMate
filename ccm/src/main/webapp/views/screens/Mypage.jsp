@@ -17,7 +17,6 @@
 	<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 	<!-- css연결 -->
 	<link rel="stylesheet" href="resources/css/common.css" />
-	<link rel="stylesheet" href="resources/css/custom.css" />
 	<link rel="stylesheet" href="resources/css/mypage.css" />
     <!-- 부트스트랩 CDN 추가 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -34,28 +33,29 @@
 	<body>
 	    <div class="wrapper" style="display: inline-block;">
 			<!-- 헤더 -->
-			<%@ include file="/views/components/header.jsp" %>
+			<jsp:include page="/views/components/header.jsp" />
 			<!-- 첫번째줄(프로필+캘린더) div -->
 			<div class="mypageh2">
-				<h2 class="mypageh2">MYPAGE</h2>
-				<hr>
+				<h2>MYPAGE</h2>
 			</div>
-	    	<div class="container">
-            	<div class="item">
-	                <div class="tonari">
-	                    <div class="hr-sect">내 프로필</div>
-	                    <form action="EditMyProfile.do">
-	                        <a href="/editMyProfilePageMove.do" class="btn btn-primary mb-3">프로필 &nbsp수정</a>
-	                    </form>
-	                    &nbsp
-	                    <form action="<%=request.getContextPath() %>/views/screens/identify.jsp">
-							<input type="hidden" value="edit" name="Value"/>
-							<input type="submit" value="정보수정"/>
-						</form>
+	    	<div class="mypage-container">
+            	<div class="item profilebox">
+	                <div class="profilebox__1">
+	                    <div class="hr-sect__1">내 프로필</div>
+						<div class="hr-sect__2">
+							<form class="hr-sect__btn1" action="EditMyProfile.do">
+								<a href="/editMyProfilePageMove.do" class="btn btn-primary mb-3">프로필 &nbsp수정</a>
+							</form>
+							&nbsp
+							<form  class="hr-sect__btn2" action="<%=request.getContextPath() %>/views/screens/identify.jsp">
+								<input type="hidden" value="edit" name="Value"/>
+								<input type="submit" value="정보수정"/>
+							</form>
+						</div>
 	                </div>
-                	<div>
+                	<div class="profilebox__2">
                     	<!--이미지 div-->
-                    	<div>
+                    	<div class="profilebox__2-img">
                         	<c:choose>
                             <c:when test="${not empty mypages.userProfileDTO.p_IMG_COPY}">
                                    <img id="profileimg" width="300" src="/resources/profile/${mypages.userProfileDTO.p_IMG_COPY}">
@@ -67,7 +67,7 @@
                     	</div>
                     	&nbsp&nbsp
 	                    <!-- 닉네임, 아이디 -->
-	                    <div class="profilebox">
+	                    <div class="profilebox__2-profile">
                    			<c:choose>
                            		<c:when test="${empty mypages}">
                               		<b>등록된 회원이 없습니다.</b>
@@ -139,54 +139,52 @@
 	                </div>
 	            </div>
         	</div>
-	       	<!-- 홈으로 돌아가기 -->
-	       	<a href="/main.do" class="btn btn-primary" >GO TO TESTVIEW</a>
-		    <!-- 부트스트랩 자바스크립트 추가 -->
-		    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-			<script>
-				const isAuth = "${isAuth}"==="true"? true : false;
-				<!--풀카렌더 셋팅-->
-				document.addEventListener('DOMContentLoaded', function() {
-			        var calendarEl = document.getElementById('calendar');
-			        var calendar = new FullCalendar.Calendar(calendarEl, {
-			            initialView : 'dayGridMonth', // 초기 로드 될때 보이는 캘린더 화면(기본 설정: 달)
-			            headerToolbar : { // 헤더에 표시할 툴 바
-			                start : 'prev next today',
-			                center : 'title',
-			                end : 'dayGridMonth,dayGridWeek,dayGridDay'
-			            },
-			            titleFormat : function(date) {
-			                return date.date.year + '년 ' + (parseInt(date.date.month) + 1) + '월';
-			            },
-			        
-			            //initialDate: '2021-07-15', // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.)
-			            selectable : true, // 달력 일자 드래그 설정가능
-			            droppable : true,
-			            editable : true,
-			            nowIndicator: true, // 현재 시간 마크
-			            locale: 'ko', // 한국어 설정
-			            events: [
-			            	//핸들러에서 담은 healthList Dto를 jstl문법으로 {} 영역을 출력한다.
-			                <c:forEach var="healthlight" items="${mypages.healthLightDTO}">
-			                    {
-			                        color: '${healthlight.CAL_COLOR}',
-			                        title: '${healthlight.CAL_DAILYCF}',
-			                        start: '${healthlight.CAL_DATE}',
-			                        end: '${healthlight.CAL_DATE}',
-			                        rendering : "background"
-			                        //backgroundColor:'${healthlight.CAL_COLOR}' 일정색
-			                    },
-			                </c:forEach>
-			            ] 
-			        });
-			        calendar.render();
-			    });        
-				const hasCoffees = false;
-			</script>
-			<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
-			<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script> 
-			<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> 
-			<script src="/resources/js/favoritelist.js" type="text/babel"></script>
 		</div>
 	</body>
+<!-- 부트스트랩 자바스크립트 추가 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+	const isAuth = "${isAuth}"==="true"? true : false;
+	<!--풀카렌더 셋팅-->
+	document.addEventListener('DOMContentLoaded', function() {
+		var calendarEl = document.getElementById('calendar');
+		var calendar = new FullCalendar.Calendar(calendarEl, {
+			initialView : 'dayGridMonth', // 초기 로드 될때 보이는 캘린더 화면(기본 설정: 달)
+			headerToolbar : { // 헤더에 표시할 툴 바
+				start : 'prev next today',
+				center : 'title',
+				end : 'dayGridMonth,dayGridWeek,dayGridDay'
+			},
+			titleFormat : function(date) {
+				return date.date.year + '년 ' + (parseInt(date.date.month) + 1) + '월';
+			},
+		
+			//initialDate: '2021-07-15', // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.)
+			selectable : true, // 달력 일자 드래그 설정가능
+			droppable : true,
+			editable : true,
+			nowIndicator: true, // 현재 시간 마크
+			locale: 'ko', // 한국어 설정
+			events: [
+				//핸들러에서 담은 healthList Dto를 jstl문법으로 {} 영역을 출력한다.
+				<c:forEach var="healthlight" items="${mypages.healthLightDTO}">
+					{
+						color: '${healthlight.CAL_COLOR}',
+						title: '${healthlight.CAL_DAILYCF}',
+						start: '${healthlight.CAL_DATE}',
+						end: '${healthlight.CAL_DATE}',
+						rendering : "background"
+						//backgroundColor:'${healthlight.CAL_COLOR}' 일정색
+					},
+				</c:forEach>
+			] 
+		});
+		calendar.render();
+	});        
+	const hasCoffees = false;
+</script>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script> 
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> 
+<script src="/resources/js/favoritelist.js" type="text/babel"></script>
 </html>
