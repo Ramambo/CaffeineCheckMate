@@ -12,6 +12,8 @@
 <script type="text/javascript">
 	var allcount = ${allcount};
 </script>
+<script type="text/javascript"> var userid = ${AUTH_USER_ID}; </script>
+
 
 <meta charset="UTF-8">
 <title>커스텀레시피</title>

@@ -21,6 +21,7 @@ public class CustomBoardListHandler  implements CommandHandler {
 public String process(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
      CustomBoardListDao dao = new CustomBoardListDao();
      Connection con = null;
+     
      con = ConnectionProvider.getConnection();
 	 int allcount = dao.allCount(con);
 	 request.setAttribute("allcount", allcount);

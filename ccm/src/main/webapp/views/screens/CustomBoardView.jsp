@@ -50,6 +50,7 @@ String m_id = (String) sessionId.getAttribute("AUTH_USER_ID");
 					
 					<br/>
 					<div>
+					<h3></h3>
 						<!-- 댓글 버튼 -->
 						<button class="reply_button" onclick="showReplyModal('${item.cus_no}')">댓글</button>
 					</div>
@@ -98,6 +99,14 @@ String m_id = (String) sessionId.getAttribute("AUTH_USER_ID");
 	}
 
 	// 모달을 닫는 함수
+	$(document).ready(function(){
+	    $(document).keydown(function(event) {
+	        if (event.which === 27) {
+	        	closeModal();
+	        }
+	    });
+	});
+	 
 	function closeModal() {
 		var modal = document.getElementById("modal");
 		modal.style.display = "none";
