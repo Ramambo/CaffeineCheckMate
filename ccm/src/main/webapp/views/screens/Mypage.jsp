@@ -31,7 +31,7 @@
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales-all.js"></script>
 </head>
 	<body>
-	    <div class="wrapper" style="display: inline-block;">
+	    <div class="wrapper mypage-wrapper" style="display: inline-block;">
 			<!-- 헤더 -->
 			<jsp:include page="/views/components/header.jsp" />
 			<!-- 첫번째줄(프로필+캘린더) div -->
@@ -41,7 +41,7 @@
 	    	<div class="mypage-container">
             	<div class="item profilebox">
 	                <div class="profilebox__1">
-	                    <div class="hr-sect__1">내 프로필</div>
+	                    <div class="hr-sect ">내 프로필</div>
 						<div class="hr-sect__2">
 							<form class="hr-sect__btn1" action="EditMyProfile.do">
 								<a href="/editMyProfilePageMove.do" class="btn btn-primary mb-3">프로필 &nbsp수정</a>
@@ -76,7 +76,6 @@
                               		<p>아이디 : ${mypages.userProfileDTO.m_ID}</p>
                                  	<p>닉네임 : ${mypages.userProfileDTO.m_NICKNAME}</p>
                                  	<p>몸무게 : ${mypages.userProfileDTO.p_WEIGHT}</p>
-                                 	
                             	</c:otherwise>
                     		</c:choose>
                     	</div>
@@ -88,7 +87,7 @@
 	                    <div id="calendar"></div>
 	                </div>
 	            </div>
-	            <div class="item">
+	            <div class="item cus-container">
 	                <div class="hr-sect">내가 작성한 레시피</div>
 	                <!--전체 상자-->
 	                <div class="boxlist">
@@ -99,15 +98,15 @@
 		                        </c:when>
 		                        <c:otherwise>
 	                                <!--custom.css에서 가져온 class-->
-                          			<span id="board" class="cus-box">
+                          			<span class="custom-box">
 	                                    <c:forEach var="myrecipe" items="${mypages.myRecipeDTO}">
 			                                <div class="boardCard">
 			                                	<a href="CustomBoardViewHandler.do?CUS_NUM=${myrecipe.CUS_NO}">
-	                                            	<img class=".cus_img" src="upload/${myrecipe.CUS_IMG_COPY}"alt="Image">
+	                                            	<img class="cus_img" src="upload/${myrecipe.CUS_IMG_COPY}"alt="Image">
 	                                              	<div class="cardTextBox">
-							                           	<p>&nbsp;&nbsp;📌 ${myrecipe.CUS_TITLE}<br/><br/></p>
-							                           	<p>&nbsp;&nbsp;📆 ${myrecipe.CUS_REGDATE}<br/><br/></p>
-							                           	<p>&nbsp;&nbsp;👍 ${myrecipe.CUS_SUMGOOD}<br/><br/></p>
+							                           	<p>&nbsp;&nbsp;📌 ${myrecipe.CUS_TITLE}</p>
+							                           	<p>&nbsp;&nbsp;📆 ${myrecipe.CUS_REGDATE}</p>
+							                           	<p>&nbsp;&nbsp;👍 ${myrecipe.CUS_SUMGOOD}</p>
 							                           	
 							                        </div>
 	                                            </a>
@@ -119,7 +118,7 @@
 	                    </div>
 	                </div>
 	            </div>
-	            <div class="item">
+	            <div class="item fav-container">
 	                <div class="hr-sect">즐겨찾기 목록</div>
 	                <!--전체 상자-->
 	                <div class="boxlist">
