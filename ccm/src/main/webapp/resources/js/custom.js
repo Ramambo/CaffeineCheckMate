@@ -29,6 +29,16 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
+    $(".button_add").click(function(event){
+        if(typeof userid === 'undefined' || userid === null){
+            alert("로그인 후 진행해주세요.");
+            event.preventDefault(); // 클릭 이벤트의 기본 동작을 중지
+            location.href = "/views/screens/login.jsp"; // 로그인 페이지로 이동
+        }
+    });
+});
+
+$(document).ready(function() {
    $("#searchInput").focus(function() {
       $(this).removeAttr('placeholder');
    });

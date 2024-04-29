@@ -41,6 +41,7 @@ public class CoffeeAddHandler implements CommandHandler{
 		 * 4) 인코딩 설정(String) : "UTF-8"
 		 * 5) 동일한 파일명에 대해서 처리 방식 : new DefaultFileRenamePolicy()
 		    -> DefaultFileRenamePolicy : (중복방지)동일한 파일 이름이 존재하면 파일명 뒤에 숫자를 붙여 디렉토리에 파일을 저장 */
+		
 		MultipartRequest multi = new MultipartRequest(
 				request,
 				saveDirectory,

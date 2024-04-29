@@ -5,7 +5,10 @@
 <listener>
 	<listener-class>jdbc.DBCPInitListener</listener-class>
 </listener>
-
+<welcome-file-list>
+      <welcome-file>/WEB-INF/config/test2.jsp</welcome-file>
+      <welcome-file>/webapp/views/screens/test2.jsp</welcome-file>
+   </welcome-file-list>
 <context-param>
 	<param-name>poolConfig</param-name>
 	<param-value>
