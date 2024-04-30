@@ -109,6 +109,7 @@ public class UpdateService {
 					if(result=="true") {
 						System.out.println("서비스 트루");
 						session.setAttribute("editOK", "editOK");
+						
 						resultPage = "/views/screens/updateTEL.jsp";
 					}else {
 						session.setAttribute("editCANCEL", "editCANCEL");
@@ -147,7 +148,7 @@ public class UpdateService {
 				System.out.println("true로들어옴");
 				 out.println("<script>alert('Password 변경완료.');"
 					 		+ "location.href="
-					 		+ "'/views/screens/testView.jsp';"
+					 		+ "'/main.do';"
 					 		+ "</script>");
 				 	session.invalidate();
 					 out.flush();
