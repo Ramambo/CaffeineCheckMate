@@ -13,8 +13,12 @@
 	var allcount = ${allcount};
 </script>
 
+
 <meta charset="UTF-8">
 <title>커스텀레시피</title>
+<script type="text/javascript"> 
+    var userid1 = ${AUTH_USER_ID}; 
+</script>
 
 </head>
 <body>

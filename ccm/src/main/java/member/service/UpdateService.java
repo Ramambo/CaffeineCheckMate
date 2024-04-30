@@ -48,7 +48,7 @@ public class UpdateService {
 					}
 					break;
 				default : 
-					 out.println("<script>alert('아이디를 확인해주세요.'); location.href='/views/screens/testView.jsp';</script>");
+					 out.println("<script>alert('아이디를 확인해주세요.'); location.href='/main.do';</script>");
 					 out.flush();
 					 break;
 			}		

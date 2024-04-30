@@ -69,7 +69,7 @@ public class LoginService {
 				break;
 			case "backupEmpty" : //멤버와 백업 테이블 모두 아이디가 없음
 				session.setAttribute("errMSG", "아이디가 존재하지않습니다.");
-				 out.println("<script>alert('로그인실패 아이디가 존재하지않습니다.(backupEmpty)'); location.href='/views/screens/login.jsp';</script>");
+				 out.println("<script>alert('로그인실패 아이디가 존재하지않습니다.'); location.href='/views/screens/login.jsp';</script>");
 				 out.flush();
 				break;
 			default :
