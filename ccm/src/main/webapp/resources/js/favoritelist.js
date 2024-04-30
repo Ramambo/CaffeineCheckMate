@@ -15,8 +15,8 @@ if (isAuth){
                         <img className="fp-item__img clickable" src={fav[key]["C_IMAGE"]}/>
                         <div className="fp-item__info clickable textlenth">{fav[key]["C_NAME"]}</div>
                     </div>
-                    <button className="fp-item__delete-btn clickable" onClick={deleteFavItem}>
-                    <i className="fa-solid fa-minus"></i>  
+                    <button className="fp-item__delete-btn clickable hidden" onClick={deleteFavItem}>
+                        <i className="fa-solid fa-minus"></i>  
                     </button>
                 </div>
                 ))}
@@ -25,8 +25,8 @@ if (isAuth){
     }
     function render(data){
         ReactDOM.render(<App data={data}/>,root);
+        addDelBtn();
     }
-
 
     //즐겨찾기 박스 선택
     const favItems = root.children;
@@ -81,15 +81,33 @@ if (isAuth){
             return(response.json());
         })
         .then(data => {
-            // document.querySelector(".fav-box").removeChild(item);
             render(data);
         })
         .catch(error => {
-          console.log("error",error);
       })
     }
 } //로그인상태에서만 동작함
 
+
+function addDelBtn (){
+    const favtogle =document.querySelector(".fav-box");
+    const deleteBtns = document.querySelectorAll(".fp-item__delete-btn");
+    if (deleteBtns.length>0){        
+        if(favtogle.classList.contains("showing-fav")){
+            deleteBtns.forEach((btn) => {
+                if(btn.classList.contains("hidden")) {
+                    btn.classList.remove("hidden");
+                }
+            });
+        }else{
+            deleteBtns.forEach((btn) => {
+                if (!btn.classList.contains("hidden")) {
+                    btn.classList.add("hidden");
+                }
+            });
+        }
+    }
+}
 /* 리액트 및 babel cdn
 <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script> 

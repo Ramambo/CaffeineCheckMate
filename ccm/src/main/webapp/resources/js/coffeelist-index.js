@@ -45,15 +45,24 @@ clTitle.addEventListener("click",function(){
 
 const delFavTogle = document.querySelector(".coffeelist-column_2__togle-fav-del");
 delFavTogle.addEventListener("click",function(){
+    const favtogle =document.querySelector(".fav-box");
     const deleteBtns = document.querySelectorAll(".fp-item__delete-btn");
-    if (deleteBtns.length>0){
-        deleteBtns.forEach((btn) => {
-            if (btn.classList.contains("hidden")) {
-                btn.classList.remove("hidden");
-            } else {
-                btn.classList.add("hidden");
-            }
-        });
+    if (deleteBtns.length>0){        
+        if(favtogle.classList.contains("showing-fav")){
+            deleteBtns.forEach((btn) => {
+                if(!btn.classList.contains("hidden")) {
+                    btn.classList.add("hidden");
+                }
+            });
+            favtogle.classList.remove("showing-fav");
+        }else{
+            deleteBtns.forEach((btn) => {
+                if (btn.classList.contains("hidden")) {
+                    btn.classList.remove("hidden");
+                }
+            });
+            favtogle.classList.add("showing-fav");
+        }
     }
 });
 
