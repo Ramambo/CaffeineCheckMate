@@ -58,7 +58,7 @@
                     	<div class="profilebox__2-img">
                         	<c:choose>
                             <c:when test="${not empty mypages.userProfileDTO.p_IMG_COPY}">
-                                   <img id="profileimg" width="140" src="/resources/profile/${mypages.userProfileDTO.p_IMG_COPY}">
+                                   <img id="profileimg" width="300" src="/resources/profile/${mypages.userProfileDTO.p_IMG_COPY}">
                              </c:when>
                              <c:otherwise>
                                    <td>등록된 프로필 이미지가 없습니다.</td>

@@ -90,7 +90,7 @@
 					                    <img src="upload/${item.cus_img_realname}" alt="Image" id="img" class="img_basic">
 					                <div class="cardTextBox">
 			                           <p><b>${item.m_id}</b>     ${item.cus_regdate}<br/>
-			                           <b>${item.cus_title}</b><br/>${item.cus_content}</p>
+			                           <b>${item.cus_title}</b><%-- <br/>${item.cus_content} --%></p>
 			                        </div>
 					            </a>
 			                </div>

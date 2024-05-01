@@ -142,7 +142,7 @@
 		        <div class="button-group">
 		          <input type="button" value="탈퇴" onclick="location.href='/views/screens/identify.jsp?Value=delete'">
 		          <span style="margin: 0 5px;"></span>
-		          <input type="button" value="취소" onclick="location.href='/views/screens/Main.jsp'" />
+		          <input type="button" value="취소" onclick="location.href='/main.do'" />
 		        </div>
 		      </div>
 		    </form>

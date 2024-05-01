@@ -52,7 +52,7 @@
 		<div class="form-image">
 			<div class="image">
 				<!-- 이미지 업로드 및 미리보기 섹션 -->
-				<img id="coffeePreviewImage" src="http://localhost:8080/resources/imgs/coffeelistb.jpg"  style="width:300px; height:400px;">
+				<img id="coffeePreviewImage" src="/resources/imgs/recipeDefault.png"  style="width:300px; height:400px;">
 				<label class="coffeelabel">이미지 파일 업로드</label>
 				<input type="file" id="cimgreal" name="cimgreal" onchange="coffee_PreviewImage()" required>
 				
